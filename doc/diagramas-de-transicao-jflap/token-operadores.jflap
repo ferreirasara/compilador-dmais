@@ -55,11 +55,11 @@
 					<id>12</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_PORCENTAGEM</name>&#13;
+					<name>OP_MODULO</name>&#13;
 					<id>13</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_E</name>&#13;
+					<name>OP_AND</name>&#13;
 					<id>14</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -71,7 +71,7 @@
 					<id>16</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_MAISMAIS</name>&#13;
+					<name>OP_INCREMENTO</name>&#13;
 					<id>17</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -95,7 +95,7 @@
 					<id>22</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_PORCENTAGEMIGUAL</name>&#13;
+					<name>OP_MODULOIGUAL</name>&#13;
 					<id>23</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -115,7 +115,7 @@
 					<id>27</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_MENORIGUAL</name>&#13;
+					<name>OP_MAIORIGUAL</name>&#13;
 					<id>28</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -127,7 +127,7 @@
 					<id>30</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_IGUALIGUAL</name>&#13;
+					<name>OP_IGUALDADE</name>&#13;
 					<id>31</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -147,10 +147,11 @@
 					<id>35</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_OU</name>&#13;
+					<name>OP_OR</name>&#13;
 					<id>36</id>&#13;
 				</state>&#13;
 			</structure>&#13;
+			<structure type="start_state"/>&#13;
 			<structure type="input_alph">&#13;
 				<symbol>!</symbol>&#13;
 				<symbol>%</symbol>&#13;
@@ -173,7 +174,6 @@
 				<symbol>u</symbol>&#13;
 				<symbol>|</symbol>&#13;
 			</structure>&#13;
-			<structure type="start_state"/>&#13;
 			<structure type="final_states">&#13;
 				<state>&#13;
 					<name>OP_DOISPONTOS</name>&#13;
@@ -200,11 +200,11 @@
 					<id>12</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_PORCENTAGEM</name>&#13;
+					<name>OP_MODULO</name>&#13;
 					<id>13</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_E</name>&#13;
+					<name>OP_AND</name>&#13;
 					<id>14</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -212,7 +212,7 @@
 					<id>15</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_MAISMAIS</name>&#13;
+					<name>OP_INCREMENTO</name>&#13;
 					<id>17</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -236,7 +236,7 @@
 					<id>22</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_PORCENTAGEMIGUAL</name>&#13;
+					<name>OP_MODULOIGUAL</name>&#13;
 					<id>23</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -252,7 +252,7 @@
 					<id>27</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_MENORIGUAL</name>&#13;
+					<name>OP_MAIORIGUAL</name>&#13;
 					<id>28</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -260,7 +260,7 @@
 					<id>30</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_IGUALIGUAL</name>&#13;
+					<name>OP_IGUALDADE</name>&#13;
 					<id>31</id>&#13;
 				</state>&#13;
 				<state>&#13;
@@ -272,7 +272,7 @@
 					<id>34</id>&#13;
 				</state>&#13;
 				<state>&#13;
-					<name>OP_OU</name>&#13;
+					<name>OP_OR</name>&#13;
 					<id>36</id>&#13;
 				</state>&#13;
 			</structure>&#13;
@@ -449,7 +449,7 @@
 						<id>1</id>&#13;
 					</from>&#13;
 					<to>&#13;
-						<name>OP_MAISMAIS</name>&#13;
+						<name>OP_INCREMENTO</name>&#13;
 						<id>17</id>&#13;
 					</to>&#13;
 				</fsa_trans>&#13;
@@ -548,7 +548,7 @@
 						<id>5</id>&#13;
 					</from>&#13;
 					<to>&#13;
-						<name>OP_PORCENTAGEM</name>&#13;
+						<name>OP_MODULO</name>&#13;
 						<id>13</id>&#13;
 					</to>&#13;
 				</fsa_trans>&#13;
@@ -559,7 +559,7 @@
 						<id>5</id>&#13;
 					</from>&#13;
 					<to>&#13;
-						<name>OP_PORCENTAGEMIGUAL</name>&#13;
+						<name>OP_MODULOIGUAL</name>&#13;
 						<id>23</id>&#13;
 					</to>&#13;
 				</fsa_trans>&#13;
@@ -570,7 +570,7 @@
 						<id>7</id>&#13;
 					</from>&#13;
 					<to>&#13;
-						<name>OP_E</name>&#13;
+						<name>OP_AND</name>&#13;
 						<id>14</id>&#13;
 					</to>&#13;
 				</fsa_trans>&#13;
@@ -625,7 +625,7 @@
 						<id>26</id>&#13;
 					</from>&#13;
 					<to>&#13;
-						<name>OP_MENORIGUAL</name>&#13;
+						<name>OP_MAIORIGUAL</name>&#13;
 						<id>28</id>&#13;
 					</to>&#13;
 				</fsa_trans>&#13;
@@ -647,7 +647,7 @@
 						<id>29</id>&#13;
 					</from>&#13;
 					<to>&#13;
-						<name>OP_IGUALIGUAL</name>&#13;
+						<name>OP_IGUALDADE</name>&#13;
 						<id>31</id>&#13;
 					</to>&#13;
 				</fsa_trans>&#13;
@@ -680,7 +680,7 @@
 						<id>35</id>&#13;
 					</from>&#13;
 					<to>&#13;
-						<name>OP_OU</name>&#13;
+						<name>OP_OR</name>&#13;
 						<id>36</id>&#13;
 					</to>&#13;
 				</fsa_trans>&#13;
@@ -781,8 +781,8 @@
 			<state_point>&#13;
 				<state>13</state>&#13;
 				<point>&#13;
-					<x>145.76606242719402</x>&#13;
-					<y>296.0287791916737</y>&#13;
+					<x>151.0</x>&#13;
+					<y>236.0</y>&#13;
 				</point>&#13;
 			</state_point>&#13;
 			<state_point>&#13;
@@ -844,8 +844,8 @@
 			<state_point>&#13;
 				<state>22</state>&#13;
 				<point>&#13;
-					<x>587.944643786927</x>&#13;
-					<y>226.95687277896465</y>&#13;
+					<x>596.0</x>&#13;
+					<y>186.0</y>&#13;
 				</point>&#13;
 			</state_point>&#13;
 			<state_point>&#13;
@@ -976,8 +976,8 @@
 				<from>5</from>&#13;
 				<to>13</to>&#13;
 				<point>&#13;
-					<x>246.1348394133365</x>&#13;
-					<y>281.8743249930292</y>&#13;
+					<x>248.7518081997395</x>&#13;
+					<y>251.85993539719234</y>&#13;
 				</point>&#13;
 			</control_point>&#13;
 			<control_point>&#13;
@@ -1072,8 +1072,8 @@
 				<from>4</from>&#13;
 				<to>22</to>&#13;
 				<point>&#13;
-					<x>695.6701114843479</x>&#13;
-					<y>217.31050683792472</y>&#13;
+					<x>699.6977895908844</x>&#13;
+					<y>196.8320704484424</y>&#13;
 				</point>&#13;
 			</control_point>&#13;
 			<control_point>&#13;
