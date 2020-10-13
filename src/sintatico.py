@@ -1,7 +1,7 @@
 import lexico
 import sys
 
-global arquivoSaida
+arquivoSaida = open('log-sintatico.txt', 'w')
 
 
 def log(token, nomeFuncao, msg):
@@ -48,7 +48,7 @@ def erro(token, nomeFuncao, msg):
     :type msg: str
     """
     global arquivoSaida
-    log(token, nomeFuncao, msg)
+    log(token, nomeFuncao, msg+token)
     print("ERRO - ", msg+token)
     arquivoSaida.close()
     sys.exit()
