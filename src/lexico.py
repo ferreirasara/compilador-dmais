@@ -37,11 +37,11 @@ def lexico(entrada, contador):
                     else:
                         break
                 contador = util.volta_um(contador)
-                return 'LB_FLOAT', lexema, contador
+                return 'PR_FLOAT', lexema, contador
         else:  # Se acabaram os digitos retorna um inteiro
             contador = util.volta_um(contador)
-            return 'LB_INT', lexema, contador
-    elif c in ['\t', '\n', ' ']:
+            return 'PR_INT', lexema, contador
+    elif c in [' ', '\n', '\t']:
         return None, None, contador
     elif util.letra(c):
         if c == 'v':
@@ -55,9 +55,160 @@ def lexico(entrada, contador):
                     if c == 'd':
                         lexema += c
                         c, contador = util.prox_char(entrada, contador)
-                        if c == ' ':
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.fim(entrada, contador):
                             contador = util.volta_um(contador)
-                            return 'LB_VOID', lexema, contador
+                            return 'PR_VOID', lexema, contador
+                        else:
+                            lexema = lexema[:-3]
+                            contador = util.volta(contador, 4)
+                    else:
+                        lexema = lexema[:-2]
+                        contador = util.volta(contador, 3)
+                else:
+                    lexema = lexema[:-1]
+                    contador = util.volta(contador, 2)
+            elif c == 'a':
+                lexema += c
+                c, contador = util.prox_char(entrada, contador)
+                if c == 'r':
+                    lexema += c
+                    c, contador = util.prox_char(entrada, contador)
+                    if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
+                        contador = util.volta_um(contador)
+                        return 'PR_VAR', lexema, contador
+                    else:
+                        lexema = lexema[:-2]
+                        contador = util.volta(contador, 3)
+                else:
+                    lexema = lexema[:-1]
+                    contador = util.volta(contador, 2)
+            else:
+                contador = util.volta_um(contador)
+        elif c == 'm':
+            c, contador = util.prox_char(entrada, contador)
+            if c == 'a':
+                lexema += c
+                c, contador = util.prox_char(entrada, contador)
+                if c == 'i':
+                    lexema += c
+                    c, contador = util.prox_char(entrada, contador)
+                    if c == 'n':
+                        lexema += c
+                        c, contador = util.prox_char(entrada, contador)
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
+                            contador = util.volta_um(contador)
+                            return 'PR_MAIN', lexema, contador
+                        else:
+                            lexema = lexema[:-3]
+                            contador = util.volta(contador, 4)
+                    else:
+                        lexema = lexema[:-2]
+                        contador = util.volta(contador, 3)
+                else:
+                    lexema = lexema[:-1]
+                    contador = util.volta(contador, 2)
+            else:
+                contador = util.volta_um(contador)
+        elif c == 'l':
+            c, contador = util.prox_char(entrada, contador)
+            if c == 'o':
+                lexema += c
+                c, contador = util.prox_char(entrada, contador)
+                if c == 'o':
+                    lexema += c
+                    c, contador = util.prox_char(entrada, contador)
+                    if c == 'p':
+                        lexema += c
+                        c, contador = util.prox_char(entrada, contador)
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
+                            contador = util.volta_um(contador)
+                            return 'PR_LOOP', lexema, contador
+                        else:
+                            lexema = lexema[:-3]
+                            contador = util.volta(contador, 4)
+                    else:
+                        lexema = lexema[:-2]
+                        contador = util.volta(contador, 3)
+                else:
+                    lexema = lexema[:-1]
+                    contador = util.volta(contador, 2)
+            else:
+                contador = util.volta_um(contador)
+        elif c == 's':
+            c, contador = util.prox_char(entrada, contador)
+            if c == 'c':
+                lexema += c
+                c, contador = util.prox_char(entrada, contador)
+                if c == 'a':
+                    lexema += c
+                    c, contador = util.prox_char(entrada, contador)
+                    if c == 'n':
+                        lexema += c
+                        c, contador = util.prox_char(entrada, contador)
+                        if c in [' ', ';', ',', '(', ')'] or c == '(':
+                            contador = util.volta_um(contador)
+                            return 'PR_SCAN', lexema, contador
+                        elif c == 'l':
+                            lexema += c
+                            c, contador = util.prox_char(entrada, contador)
+                            if c == 'n':
+                                lexema += c
+                                c, contador = util.prox_char(entrada, contador)
+                                if c in [' ', ';', ',', '(', ')'] or c == '(':
+                                    contador = util.volta_um(contador)
+                                    return 'PR_SCANLN', lexema, contador
+                                else:
+                                    lexema = lexema[:-5]
+                                    contador = util.volta(contador, 6)
+                            else:
+                                lexema = lexema[:-4]
+                                contador = util.volta(contador, 5)
+                        else:
+                            lexema = lexema[:-3]
+                            contador = util.volta(contador, 4)
+                    else:
+                        lexema = lexema[:-2]
+                        contador = util.volta(contador, 3)
+                else:
+                    lexema = lexema[:-1]
+                    contador = util.volta(contador, 2)
+            else:
+                contador = util.volta_um(contador)
+        elif c == 'p':
+            c, contador = util.prox_char(entrada, contador)
+            if c == 'r':
+                lexema += c
+                c, contador = util.prox_char(entrada, contador)
+                if c == 'i':
+                    lexema += c
+                    c, contador = util.prox_char(entrada, contador)
+                    if c == 'n':
+                        lexema += c
+                        c, contador = util.prox_char(entrada, contador)
+                        if c == 't':
+                            lexema += c
+                            c, contador = util.prox_char(entrada, contador)
+                            if c in [' ', ';', ',', '(', ')'] or c == '(':
+                                contador = util.volta_um(contador)
+                                return 'PR_PRINT', lexema, contador
+                            elif c == 'l':
+                                lexema += c
+                                c, contador = util.prox_char(entrada, contador)
+                                if c == 'n':
+                                    lexema += c
+                                    c, contador = util.prox_char(entrada, contador)
+                                    if c in [' ', ';', ',', '(', ')'] or c == '(':
+                                        contador = util.volta_um(contador)
+                                        return 'PR_PRINTLN', lexema, contador
+                                    else:
+                                        lexema = lexema[:-6]
+                                        contador = util.volta(contador, 7)
+                                else:
+                                    lexema = lexema[:-5]
+                                    contador = util.volta(contador, 6)
+                            else:
+                                lexema = lexema[:-4]
+                                contador = util.volta(contador, 5)
                         else:
                             lexema = lexema[:-3]
                             contador = util.volta(contador, 4)
@@ -77,9 +228,9 @@ def lexico(entrada, contador):
                 if c == 't':
                     lexema += c
                     c, contador = util.prox_char(entrada, contador)
-                    if c == ' ':
+                    if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                         contador = util.volta_um(contador)
-                        return 'LB_INT', lexema, contador
+                        return 'PR_INT', lexema, contador
                     else:
                         lexema = lexema[:-2]
                         contador = util.volta(contador, 3)
@@ -89,9 +240,9 @@ def lexico(entrada, contador):
             elif c == 'f':
                 lexema += c
                 c, contador = util.prox_char(entrada, contador)
-                if c == ' ':
+                if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                     contador = util.volta_um(contador)
-                    return 'LB_IF', lexema, contador
+                    return 'PR_IF', lexema, contador
                 else:
                     lexema = lexema[:-1]
                     contador = util.volta(contador, 2)
@@ -108,9 +259,9 @@ def lexico(entrada, contador):
                     if c == 'r':
                         lexema += c
                         c, contador = util.prox_char(entrada, contador)
-                        if c == ' ':
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                             contador = util.volta_um(contador)
-                            return 'LB_CHAR', lexema, contador
+                            return 'PR_CHAR', lexema, contador
                         else:
                             lexema = lexema[:-3]
                             contador = util.volta(contador, 4)
@@ -141,9 +292,9 @@ def lexico(entrada, contador):
                                     if c == 'e':
                                         lexema += c
                                         c, contador = util.prox_char(entrada, contador)
-                                        if c == ' ':
+                                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                                             contador = util.volta_um(contador)
-                                            return 'LB_CONTINUE', lexema, contador
+                                            return 'PR_CONTINUE', lexema, contador
                                         else:
                                             lexema = lexema[:-7]
                                             contador = util.volta(contador, 8)
@@ -178,9 +329,9 @@ def lexico(entrada, contador):
                     if c == 'l':
                         lexema += c
                         c, contador = util.prox_char(entrada, contador)
-                        if c == ' ':
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                             contador = util.volta_um(contador)
-                            return 'LB_BOOL', lexema, contador
+                            return 'PR_BOOL', lexema, contador
                         else:
                             lexema = lexema[:-3]
                             contador = util.volta(contador, 4)
@@ -202,9 +353,9 @@ def lexico(entrada, contador):
                         if c == 'k':
                             lexema += c
                             c, contador = util.prox_char(entrada, contador)
-                            if c == ' ':
+                            if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                                 contador = util.volta_um(contador)
-                                return 'LB_BREAK', lexema, contador
+                                return 'PR_BREAK', lexema, contador
                             else:
                                 lexema = lexema[:-4]
                                 contador = util.volta(contador, 5)
@@ -230,9 +381,30 @@ def lexico(entrada, contador):
                     if c == 'e':
                         lexema += c
                         c, contador = util.prox_char(entrada, contador)
-                        if c == ' ':
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                             contador = util.volta_um(contador)
                             return 'LB_BOOL', lexema, contador
+                        else:
+                            lexema = lexema[:-3]
+                            contador = util.volta(contador, 4)
+                    else:
+                        lexema = lexema[:-2]
+                        contador = util.volta(contador, 3)
+                else:
+                    lexema = lexema[:-1]
+                    contador = util.volta(contador, 2)
+            elif c == 'h':
+                lexema += c
+                c, contador = util.prox_char(entrada, contador)
+                if c == 'e':
+                    lexema += c
+                    c, contador = util.prox_char(entrada, contador)
+                    if c == 'n':
+                        lexema += c
+                        c, contador = util.prox_char(entrada, contador)
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
+                            contador = util.volta_um(contador)
+                            return 'PR_THEN', lexema, contador
                         else:
                             lexema = lexema[:-3]
                             contador = util.volta(contador, 4)
@@ -255,9 +427,9 @@ def lexico(entrada, contador):
                     if c == 'o':
                         lexema += c
                         c, contador = util.prox_char(entrada, contador)
-                        if c == ' ':
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                             contador = util.volta_um(contador)
-                            return 'LB_GOTO', lexema, contador
+                            return 'PR_GOTO', lexema, contador
                         else:
                             lexema = lexema[:-3]
                             contador = util.volta(contador, 4)
@@ -274,9 +446,9 @@ def lexico(entrada, contador):
             if c == 'o':
                 lexema += c
                 c, contador = util.prox_char(entrada, contador)
-                if c == ' ':
+                if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                     contador = util.volta_um(contador)
-                    return 'LB_DO', lexema, contador
+                    return 'PR_DO', lexema, contador
                 else:
                     lexema = lexema[:-1]
                     contador = util.volta(contador, 2)
@@ -293,9 +465,42 @@ def lexico(entrada, contador):
                     if c == 'e':
                         lexema += c
                         c, contador = util.prox_char(entrada, contador)
-                        if c == ' ':
+                        if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                             contador = util.volta_um(contador)
-                            return 'LB_ELSE', lexema, contador
+                            return 'PR_ELSE', lexema, contador
+                        else:
+                            lexema = lexema[:-3]
+                            contador = util.volta(contador, 4)
+                    else:
+                        lexema = lexema[:-2]
+                        contador = util.volta(contador, 3)
+                else:
+                    lexema = lexema[:-1]
+                    contador = util.volta(contador, 2)
+            elif c == 'n':
+                lexema += c
+                c, contador = util.prox_char(entrada, contador)
+                if c == 'd':
+                    lexema += c
+                    c, contador = util.prox_char(entrada, contador)
+                    if c == '-':
+                        lexema += c
+                        c, contador = util.prox_char(entrada, contador)
+                        if c == 'i':
+                            lexema += c
+                            c, contador = util.prox_char(entrada, contador)
+                            if c == 'f':
+                                lexema += c
+                                c, contador = util.prox_char(entrada, contador)
+                                if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
+                                    contador = util.volta_um(contador)
+                                    return 'PR_ENDIF', lexema, contador
+                                else:
+                                    lexema = lexema[:-5]
+                                    contador = util.volta(contador, 6)
+                            else:
+                                lexema = lexema[:-4]
+                                contador = util.volta(contador, 5)
                         else:
                             lexema = lexema[:-3]
                             contador = util.volta(contador, 4)
@@ -321,9 +526,9 @@ def lexico(entrada, contador):
                         if c == 'e':
                             lexema += c
                             c, contador = util.prox_char(entrada, contador)
-                            if c == ' ':
+                            if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                                 contador = util.volta_um(contador)
-                                return 'LB_WHILE', lexema, contador
+                                return 'PR_WHILE', lexema, contador
                             else:
                                 lexema = lexema[:-4]
                                 contador = util.volta(contador, 5)
@@ -355,9 +560,9 @@ def lexico(entrada, contador):
                             if c == 'n':
                                 lexema += c
                                 c, contador = util.prox_char(entrada, contador)
-                                if c == ' ':
+                                if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                                     contador = util.volta_um(contador)
-                                    return 'LB_RETURN', lexema, contador
+                                    return 'PR_RETURN', lexema, contador
                                 else:
                                     lexema = lexema[:-5]
                                     contador = util.volta(contador, 6)
@@ -389,7 +594,7 @@ def lexico(entrada, contador):
                         if c == 'e':
                             lexema += c
                             c, contador = util.prox_char(entrada, contador)
-                            if c == ' ':
+                            if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                                 contador = util.volta_um(contador)
                                 return 'LB_BOOL', lexema, contador
                             else:
@@ -416,9 +621,24 @@ def lexico(entrada, contador):
                         if c == 't':
                             lexema += c
                             c, contador = util.prox_char(entrada, contador)
-                            if c == ' ':
+                            if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                                 contador = util.volta_um(contador)
-                                return 'LB_FLOAT', lexema, contador
+                                return 'PR_FLOAT', lexema, contador
+                            else:
+                                lexema = lexema[:-4]
+                                contador = util.volta(contador, 5)
+                        else:
+                            lexema = lexema[:-3]
+                            contador = util.volta(contador, 4)
+                    elif c == 'o':
+                        lexema += c
+                        c, contador = util.prox_char(entrada, contador)
+                        if c == 'p':
+                            lexema += c
+                            c, contador = util.prox_char(entrada, contador)
+                            if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
+                                contador = util.volta_um(contador)
+                                return 'PR_LOOP', lexema, contador
                             else:
                                 lexema = lexema[:-4]
                                 contador = util.volta(contador, 5)
@@ -437,9 +657,9 @@ def lexico(entrada, contador):
                 if c == 'r':
                     lexema += c
                     c, contador = util.prox_char(entrada, contador)
-                    if c == ' ':
+                    if c in [' ', '\n', '\t'] or util.fim(entrada, contador) or util.simbolo(c):
                         contador = util.volta_um(contador)
-                        return 'LB_FOR', lexema, contador
+                        return 'PR_FOR', lexema, contador
                     else:
                         lexema = lexema[:-2]
                         contador = util.volta(contador, 3)
@@ -452,7 +672,7 @@ def lexico(entrada, contador):
             c, contador = util.prox_char(entrada, contador)
             if util.letra(c) or c.isdigit() or c in ['_', '$']:
                 lexema += c
-            elif c in [' ', ';', ',', '(', ')']:
+            elif c in [' ', '\n', '\t', ')', '(', ';'] or util.fim(entrada, contador):
                 contador = util.volta_um(contador)
                 return 'ID', lexema, contador
             else:
@@ -555,6 +775,9 @@ def lexico(entrada, contador):
             if c == '=':
                 lexema += c
                 return 'OP_MENORIGUAL', lexema, contador
+            elif c == '>':
+                lexema += c
+                return 'OP_DIFERENTE', lexema, contador
             else:
                 return 'OP_MENOR', lexema, contador
         elif c == '=':
@@ -590,46 +813,3 @@ def lexico(entrada, contador):
                 return 'ERRO', 'Char inválido: ' + lexema, contador
     else:
         return 'ERRO', 'Operador inválido: ' + c, contador
-
-
-# if __name__ == '__main__':
-#     if len(sys.argv) != 3:
-#         print("Número inválido de argumentos. Use python core.py -[opcao] [arquivo]")
-#         print("python core.py -l >> faz a análise léxica do arquivo")
-#         print("python core.py -s >> faz a análise sintática do arquivo")
-#         sys.exit()
-#
-#     arquivoEntrada = open(sys.argv[2], 'r')
-#     entrada = arquivoEntrada.read()
-#     arquivoEntrada.close()
-#
-#     if sys.argv[1] == '-l':
-#         arquivoSaida = open('log-lexico.txt', 'w')
-#
-#         contador = 0
-#         token = ''
-#         lexema = ''
-#
-#         while token != 'FIM' and token != 'ERRO':
-#             token, lexema, contador = lexico(entrada, contador)
-#             grava_token(arquivoSaida, token, lexema)
-#
-#         arquivoSaida.close()
-
-    # elif sys.argv[1] == '-s':
-    #     arquivoSaida = open('log-sintatico.txt', 'w')
-
-    #     token = ''
-    #     lexema = ''
-
-    #     while token != 'FIM' and token != 'ERRO':
-    #         # token, lexema = analex()
-    #         grava_token(arquivoSaida, token, lexema)
-
-    #     arquivoSaida.close()
-
-    # else:
-    #     print("Número inválido de argumentos. Use python core.py -[opcao] [arquivo]")
-    #     print("python core.py -l >> faz a análise léxica do arquivo")
-    #     print("python core.py -s >> faz a análise sintática do arquivo")
-    #     sys.exit()

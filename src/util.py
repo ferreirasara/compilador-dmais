@@ -9,11 +9,11 @@ def grava_token(arquivo, token, lexema):
     :type lexema: str
     """
     if token is not None and lexema is not None:
-        # arquivo.write(str(token).ljust(20, ' '))
-        # arquivo.write(' | ')
-        # arquivo.write(str(lexema))
-        # arquivo.write('\n')
-        print(str(token).ljust(20, ' '), ' | ', str(lexema))
+        arquivo.write(str(token).ljust(20, ' '))
+        arquivo.write(' | ')
+        arquivo.write(str(lexema))
+        arquivo.write('\n')
+        # print(str(token).ljust(20, ' '), ' | ', str(lexema))
 
 
 def volta_um(contador):

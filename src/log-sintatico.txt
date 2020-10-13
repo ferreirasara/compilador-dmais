@@ -1,0 +1,5 @@
+PR_MAIN	decl_main	OK
+SP_ABREPARENTESES	decl_main	OK
+SP_FECHAPARENTESES	decl_main	OK
+PR_IF	com_selecao	OK
+ID	var	OK

@@ -18,7 +18,7 @@ if __name__ == '__main__':
     if sys.argv[1] == '-l':
         arquivoSaida = open('log-lexico.txt', 'w')
 
-        contador = 0
+        contador = -1
         token = ''
         lexema = ''
 
@@ -29,17 +29,7 @@ if __name__ == '__main__':
         arquivoSaida.close()
 
     elif sys.argv[1] == '-s':
-        arquivoSaida = open('log-sintatico.txt', 'w')
-
-        contador = 0
-        token = ''
-        lexema = ''
-
-        while token != 'FIM' and token != 'ERRO':
-            token, lexema, contador = sintatico.sintatico()
-            util.grava_token(arquivoSaida, token, lexema)
-
-        arquivoSaida.close()
+        sintatico.sintatico(entrada)
 
     else:
         print("Número inválido de argumentos. Use python core.py -[opcao] [arquivo]")

@@ -1,0 +1,14 @@
+PR_MAIN              | main
+SP_ABREPARENTESES    | (
+SP_FECHAPARENTESES   | )
+PR_WHILE             | while
+ID                   | a
+OP_IGUAL             | =
+LB_BOOL              | true
+PR_DO                | do
+PR_PRINT             | print
+SP_ABREPARENTESES    | (
+ID                   | a
+SP_FECHAPARENTESES   | )
+PR_LOOP              | loop
+SP_PONTOEVIRGULA     | ;

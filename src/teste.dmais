@@ -1,3 +1,2 @@
-for (int i = 0; i < 10; ++i) {
-    printf("%d ", i);
-}
+main ()
+    if a > b then print(a) else print(b) end-if;
