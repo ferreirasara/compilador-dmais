@@ -2,7 +2,47 @@ import lexico
 import sys
 
 arquivoSaida = open('log-sintatico.txt', 'w')
+tabelaDeSimbolos = []
 
+
+# tabelaDeSimbolos = ['a', 'var', 'int', True (declarada), False (não inicializada), '' (quando for removida)]
+
+def consultarSimbolo(TS, identificador):
+    for i in range(len(TS)):
+        if TS[i][0] == identificador:
+            return i
+    return -1
+
+
+def removerSimbolo(TS, identificador):
+    index = consultarSimbolo(TS, identificador)
+    if index != -1:
+        TS[index][5] = 'removida'
+        return True
+    return False
+
+
+def adicionarSimbolo(TS, identificador, categoria, tipo='?'):
+    if consultarSimbolo(TS, identificador) == -1:
+        TS.append([identificador, tipo, categoria, True, False, 'nao removida'])
+        return True
+    return False
+
+
+def modificarTipoSimbolo(TS, identificador, tipo):
+    index = consultarSimbolo(TS, identificador)
+    if index != -1:
+        TS[index][1] = tipo
+        return True
+    return False
+
+
+def modificarInicializadaSimbolo(TS, identificador, inicializada):
+    index = consultarSimbolo(TS, identificador)
+    if index != -1:
+        TS[index][4] = inicializada
+        return True
+    return False
 
 def log(token, nomeFuncao, msg):
     """
